@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
@@ -7,7 +7,6 @@ RUN npm install
 
 COPY . .
 
-# Build nuxt
 RUN npm run build
 
 ENV PORT=3000
