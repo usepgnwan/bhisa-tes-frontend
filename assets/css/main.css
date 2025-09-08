@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@plugin 'tailwind-scrollbar';
+
+@theme static { 
+  /* --color-pool-50: #F8C031;  */
+  --ui-header-height : 80px;
+
+
+  --color-pool-50: #fffbeb;
+  --color-pool-100: #fdf2c8;
+  --color-pool-200: #fbe58c;
+  --color-pool-300: #f9d250;
+  --color-pool-400: #f8c031;
+  --color-pool-500: #f19c0f;
+  --color-pool-600: #d67709;
+  --color-pool-700: #b1530c;
+  --color-pool-800: #904010;
+  --color-pool-900: #763511;
+  --color-pool-950: #441a04;
+
+  --color-second-pool-50: #fef8ec;
+  --color-second-pool-100: #fbebca;
+  --color-second-pool-200: #f6d691;
+  --color-second-pool-300: #f1ba58;
+  --color-second-pool-400: #ed9f2a;
+  --color-second-pool-500: #e6811a;
+  --color-second-pool-600: #cc6013;
+  --color-second-pool-700: #a94214;
+  --color-second-pool-800: #8a3416;
+  --color-second-pool-900: #712c16;
+  --color-second-pool-950: #411407;
+
+  --color-packer-50: #fff5ed;
+  --color-packer-100: #fee8d6;
+  --color-packer-200: #fccdac;
+  --color-packer-300: #faa977;
+  --color-packer-400: #f77a40;
+  --color-packer-500: #f5581a;
+  --color-packer-600: #e63d10;
+  --color-packer-700: #c42d10;
+  --color-packer-800: #972415;
+  --color-packer-900: #7a2114;
+  --color-packer-950: #420d08;
+
+  --color-pooler-50: #fff0f0;
+  --color-pooler-100: #ffdcdc;
+  --color-pooler-200: #ffc0c0;
+  --color-pooler-300: #ff9494;
+  --color-pooler-400: #ff5656;
+  --color-pooler-500: #ff2222;
+  --color-pooler-600: #ff0202;
+  --color-pooler-700: #d80000;
+  --color-pooler-800: #b20202;
+  --color-pooler-900: #7b0808;
+  --color-pooler-950: #510000;
+
+  --color-second-pooler-50: #fcf4f4;
+  --color-second-pooler-100: #f8e8e8;
+  --color-second-pooler-200: #f3d5d5;
+  --color-second-pooler-300: #eab7b7;
+  --color-second-pooler-400: #dc8d8d;
+  --color-second-pooler-500: #cb6868;
+  --color-second-pooler-600: #b64c4c;
+  --color-second-pooler-700: #983d3d;
+  --color-second-pooler-800: #7f3535;
+  --color-second-pooler-900: #6b3131;
+  --color-second-pooler-950: #542121;
+
+  --color-second-gray-50: #fcfcfc;
+  --color-second-gray-100: #efefef;
+  --color-second-gray-200: #dcdcdc;
+  --color-second-gray-300: #bdbdbd;
+  --color-second-gray-400: #989898;
+  --color-second-gray-500: #7c7c7c;
+  --color-second-gray-600: #656565;
+  --color-second-gray-700: #525252;
+  --color-second-gray-800: #464646;
+  --color-second-gray-900: #3d3d3d;
+  --color-second-gray-950: #292929;
+}
