@@ -17,55 +17,12 @@ yarn install
 bun install
 ```
 
-## Development Server
+## PREVIEW
+ <img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/ac4e7e84-88b0-4467-95e2-f5aa5c88ac10" />
+<img width="1919" height="981" alt="image" src="https://github.com/user-attachments/assets/536d5830-bef6-471c-a04d-15540aad3de9" />
+<img width="1919" height="976" alt="image" src="https://github.com/user-attachments/assets/c7038daf-40f4-462b-a9f8-d6c8710e7a83" />
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
- 
+## ACCESS LINK
+https://bhisa-tes-frontend-production.up.railway.app/
+backend :
+https://backend-sqlite-express-production.up.railway.app/api-docs/#/Profile/get_profile
