@@ -21,7 +21,12 @@ onUnmounted(() => {
 
 <template>
     <header :class="[  'fixed top-0 p-6 w-full transition-colors duration-300 z-50 ',  isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white']"  >
-      <div class="w-full   flex justify-end px-8">
+      <div class="w-full   flex justify-between max-md:justify-end px-8">
+        <div class="max-md:hidden">
+            <h3 class="text-2xl">
+                Shutle Bhisa
+            </h3>
+        </div>
         <ul class="flex space-x-6 items-center">
           <li>Home</li>
           <li>Outlet</li>

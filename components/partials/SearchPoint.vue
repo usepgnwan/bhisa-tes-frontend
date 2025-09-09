@@ -3,6 +3,7 @@ import InputFloating from './input-floating.vue';
 import type { Wilayah } from '~/interface';
 const props = defineProps({
     placeholder: { type: String, default: "Point" },
+    deskripsi: { type: String, default: "Point" },
     data : { type:  Object as PropType<Wilayah[]>  },
     value: { type: [String, Number, null] as PropType<string | number | null>, default: '' }, 
     parent_value: { type: [String, Number, null] as PropType<string | number | null>, default: '' }, 
@@ -32,12 +33,16 @@ function clickMe(parent_value: any, value: any | null, placeholder: string) {
 <template>
     <UPopover v-model:open="open" :dismissible="true" :ui="{ content: 'px-2 py-4 pl-4' }"> 
 
-    <InputFloating :readonly="true" v-model:value="props.placeholder" type="input" :id="props.name" :name="props.name" :placeholder="placeholder" :statFloat=false  ></InputFloating> 
+    <InputFloating :readonly="true" v-model:value="props.placeholder" type="input" :id="props.name" :name="props.name" :placeholder="deskripsi" :statFloat=false  ></InputFloating> 
     <template #content>
         <div class="mb-4 w-52">
         <InputFloating type="input" :id="props.name" :name="props.name" placeholder="Ketik kota, lokasi atau wilayah" :statFloat=false  ></InputFloating>  
         </div> 
         <div class="max-h-48 overflow-y-auto  w-52 text-wrap">
+            
+        <div v-if="props.data?.length ==0" class="p-0 text-xs text-center">
+            Hasil tidak ditemukan / keberangkatan belum di pilih
+        </div>
         <div v-if="props.data == undefined" class="p-0">
             Oops hasil tidak ditemukan
         </div>
