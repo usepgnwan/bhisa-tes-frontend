@@ -24,7 +24,8 @@ onUnmounted(() => {
       <div class="w-full   flex justify-between max-md:justify-end px-8">
         <div class="max-md:hidden">
             <h3 class="text-2xl">
-                Shutle Bhisa
+                 <NuxtImg src="/file/img/bhisa-logo.png" class="w-32" v-if="!isScrolled"></NuxtImg>
+                 <NuxtImg src="/file/img/bhisa-logo2.png" class="w-32" v-if="isScrolled"></NuxtImg>
             </h3>
         </div>
         <ul class="flex space-x-6 items-center">
