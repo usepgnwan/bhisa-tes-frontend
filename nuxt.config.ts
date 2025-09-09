@@ -10,7 +10,9 @@ export default defineNuxtConfig({
       BASE_URL: process.env.BASE_URL,
       APP_ENV: process.env.APP_ENV,
     },
-    BASE_MAIN_URL: process.env.BASE_MAIN_URL,
-    BASE_ROLE_URL: process.env.BASE_ROLE_URL, 
+    BASE_MAIN_URL: process.env.BASE_MAIN_URL, 
+    SECRET_MAIN_KEY: process.env.SECRET_MAIN_KEY, 
   },
 })
+
+ 
