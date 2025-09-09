@@ -43,16 +43,16 @@ function clickMe(parent_value: any, value: any | null, placeholder: string) {
         </div>
         <div class="flex flex-col space-y-2"  v-if="props.data !== undefined">
             <div class="space-y-2" v-for="value in props.data">
-                <div class="flex space-x-2  items-center cursor-pointer" @click="clickMe(value.id, null, value.title )">
-                    <UIcon name="i-ri-building-line" class="w-6 h-6 text-pool-400"></UIcon>
+                <div class="flex space-x-2  items-center cursor-pointer" @click="clickMe(value.id, null, value.title )" :class="props.placeholder == value.title ? 'bg-pool-400 text-white px-1 rounded-lg': ''">
+                    <UIcon name="i-ri-building-line" class="w-6 h-6 " :class="props.placeholder == value.title ? '  text-white': 'text-pool-400'"></UIcon>
                     <div class="font-semibold space-y-0 flex flex-col">
                     <span>{{ value.title }}</span>
                     <small>Semua Titik Lokasi</small>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-1.5 pl-3" v-for="v in value.points">
-                    <div class="flex space-x-2 items-center cursor-pointer" @click="clickMe(value.id, v.id, v.title )">
-                        <UIcon name="i-eva-pin-fill" class="w-5 h-5 text-pool-400"></UIcon>
+                    <div class="flex space-x-2 items-center cursor-pointer" @click="clickMe(value.id, v.id, v.title )" :class="props.placeholder == v.title ? 'bg-pool-400 text-white px-1 rounded-lg': ''">
+                        <UIcon name="i-eva-pin-fill" class="w-5 h-5 "  :class="props.placeholder == v.title ? '  text-white': 'text-pool-400'"></UIcon>
                         <div class="  space-y-0 flex flex-col">
                             <span>{{ v.title }}</span>
                             <small class="line-clamp-1">{{ v.alamat }}</small>

@@ -54,8 +54,7 @@ const selectedPoint = ref('')
 const selectedParent = ref('')
 const selectedPlaceholder = ref('Pilih Keberangkatan')
 function getChange(){  
-  const data = datalokasi
-  .map((parent) => {
+  const data = datalokasi.value.map((parent) => {
  
     if (!selectedPoint.value) {
       if (parent.id !== Number(selectedParent.value)) {
