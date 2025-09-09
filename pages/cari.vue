@@ -6,17 +6,20 @@ let token = route.query._token;
  
 let status = true;
 let data = ref({});
-try{
-    let decrypt = usePayloadData(token, false).payload;
-    // console.log(decrypt);
-    data.value = decrypt;
-    status = true
-}catch(e){
-    status = false;
-    data.value = {};
+
+function getQuery(t:any | null){
+    try{
+        let decrypt = usePayloadData((t == null ? token : t), false).payload;
+        // console.log(decrypt);
+        data.value = decrypt;
+        status = true
+    }catch(e){
+        status = false;
+        data.value = {};
+    }
 }
 
-const items = ref<StepperItem[]>([
+const items = ref([
   {
     title: 'Buah Batu',
     description: '09:00',
@@ -34,6 +37,23 @@ const items = ref<StepperItem[]>([
   },
  
 ])
+let openMe = ref(false)
+const toggleOpenMe = () => {
+  openMe.value = !openMe.value
+}
+// onMounted(()=>{
+//     getQuery()
+// })
+
+watch(
+  () => route.query._token,
+  (newToken) => {
+    if (newToken) {
+      getQuery(newToken)
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -44,22 +64,23 @@ const items = ref<StepperItem[]>([
         </p>
     </section>
     <section class="mt-[100px] max-w-11/12 mx-auto  p-4">
-        <div class="flex space-x-8 ">
-            <div class="w-3/4 space-y-5">
-                <div class="flex space-x-3">
-                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5">
+   
+        <div class="flex space-x-8 max-lg:grid max-lg:grid-cols-1 max-lg:space-x-0 max-lg:gap-4">
+            <div class="w-3/4 space-y-5 max-lg:w-full max-lg:order-2">
+                <div class="flex space-x-3 max-lg:overflow-y-auto  ">
+                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5 max-lg:px-4 max-lg:text-sm max-lg:min-w-36 text-center ">
                         Harga Terendah
                     </div>
-                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5">
+                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5 max-lg:px-4 max-lg:text-sm max-lg:min-w-36 text-center ">
                         00:00 - 05:59
                     </div>
-                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5">
+                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5 max-lg:px-4 max-lg:text-sm max-lg:min-w-36 text-center ">
                         06:00 - 12:59
                     </div>
-                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5">
+                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5 max-lg:px-4 max-lg:text-sm max-lg:min-w-36 text-center ">
                         01:00 - 06:59
                     </div>
-                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5">
+                    <div class="px-6 rounded-2xl border border-gray-300 py-1.5 max-lg:px-4 max-lg:text-sm max-lg:min-w-36 text-center ">
                         07:00 - 11:59
                     </div>
                 </div>
@@ -140,7 +161,7 @@ const items = ref<StepperItem[]>([
                     </div>
                 </div>
             </div>
-            <div class=" w-1/4 ">
+            <div class=" w-1/4 max-lg:w-full max-lg:order-1 ">
                 <div class="shadow-sm p-4 rounded-2xl sticky top-28 space-y-5">
                     <div class="font-semibold">
                         Travel dari {{ data.titik_awal_placeholder ?? '-'}} Ke {{ data.titik_akhir_placeholder ?? '-'}}
@@ -187,12 +208,19 @@ const items = ref<StepperItem[]>([
                         </div>
                     </div>
                     <div >
-                        <btn.primary class="w-full">
+ 
+                        <btn.primary class="w-full" @click="toggleOpenMe">
                             <div class="px-4 w-full flex items-center justify-center space-x-3  text-lg">
                                 <UIcon name="i-material-symbols-search-rounded text-2xl"></UIcon>
                                 <span>Ubah pencarian</span>
                             </div>
                         </btn.primary>
+                        <UModal v-model:open="openMe"  title="props.title" :ui="{ footer: 'justify-end' }"  class="!max-w-3xl">
+                            
+                            <template #body>
+                                <FilterTiket @submit="toggleOpenMe"></FilterTiket>
+                            </template>
+                        </UModal> 
                     </div>
                 </div>
            </div>

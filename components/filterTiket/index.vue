@@ -169,6 +169,8 @@ function buildSchema(isReturn: boolean) {
 
 import { usePayloadData } from "~/composables/usePayloadData";
 const errors = ref<Record<string,string[]>>({})
+const route = useRoute();
+const emit = defineEmits(['submit'])
 function sendForm(){
   let zschema = buildSchema(isReturn.value).superRefine((data, ctx) => {
                                 // cek konsistensi tanggal: pulang >= berangkat
@@ -201,11 +203,13 @@ function sendForm(){
         showToast("Perikas kembali form", "warning")           
         return false
       }
-   
-      let token = usePayloadData(dataForm.value).payload;
-      // const exp = Math.floor(Date.now() / 1000) + 5 * 60
-      router.push({ path: '/cari', query: { _token: token  } })
+     
+      let token = usePayloadData(dataForm.value).payload;  
+      emit('submit');
+      router.push({ path: '/cari', query: { _token: token } })
 }
+
+ 
 </script>
 <template>
     <div class="grid xl:grid-cols-5 lg:grid-cols-3 max-lg:grid-cols-1 gap-1   w-full">
