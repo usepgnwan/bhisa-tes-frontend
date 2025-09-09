@@ -63,7 +63,7 @@ watch(
            Jadwal Tidak Ditemukan
         </p>
     </section>
-    <section class="mt-[100px] max-w-11/12 mx-auto  p-4">
+    <section class="mt-[100px] max-w-11/12 mx-auto  p-4"  v-if="status">
    
         <div class="flex space-x-8 max-lg:grid max-lg:grid-cols-1 max-lg:space-x-0 max-lg:gap-4">
             <div class="w-3/4 space-y-5 max-lg:w-full max-lg:order-2">
@@ -88,7 +88,7 @@ watch(
                 <div class="px-2 font-semibold">
                     Menampilkan 15 Jadwal Tersedia Travel {{ data.titik_awal_placeholder ?? '-'}} ke {{ data.titik_akhir_placeholder ?? '-'}}
                 </div>
-                <div class="space-y-5 w-full flex flex-col">
+                <div class="space-y-5 w-full flex flex-col" v-for="_ in Array(6)">
                     <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
                         <p>Keberangkatan jam <b>4:00</b> Estimasi 2 jam 30 menit</p>
                         <div class="flex space-x-4 items-center">
@@ -106,60 +106,12 @@ watch(
                         </div>
                         <div class="flex justify-end">
                             <div class="flex space-x-6 items-center">
-                                <p class="text-xl">Rp.250.000</p> 
-                                <btn.primary>Pesan Sekarang</btn.primary> 
+                                <p class="text-xl">Rp.250.000</p>  
+                                <NuxtLink :to="`/booking?_token=${encodeURIComponent(route.query._token)}`"  class="bg-blue-800 text-white px-4 py-1.5 rounded-lg hover:bg-blue-800/85  flex items-center space-x-1.5">Pesan Sekarang</NuxtLink>
                             </div> 
                         </div>
                     </div>
-                </div>
-                <div class="space-y-5 w-full flex flex-col">
-                    <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
-                        <p>Keberangkatan jam <b>4:00</b> Estimasi 2 jam 30 menit</p>
-                        <div class="flex space-x-4 items-center">
-                            <div class="w-1/5 ">
-                                <div class="flex space-x-2 items-center shadow rounded-2xl p-3 bg-red-700 text-white">
-
-                                    <UIcon name="i-icon-park-outline-tour-bus" class="text-3xl"/> 
-                                    <UIcon name="i-icon-park-outline-dot" class="text-lg"/> 
-                                    <small>Cititrans Shuttle</small>
-                                </div>
-                            </div>
-                            <div class="w-4/5">
-                                <UStepper :items="items" class="w-full" />
-                            </div>
-                        </div>
-                        <div class="flex justify-end">
-                            <div class="flex space-x-6 items-center">
-                                <p class="text-xl">Rp.250.000</p> 
-                                <btn.primary>Pesan Sekarang</btn.primary> 
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-5 w-full flex flex-col">
-                    <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
-                        <p>Keberangkatan jam <b>4:00</b> Estimasi 2 jam 30 menit</p>
-                        <div class="flex space-x-4 items-center">
-                            <div class="w-1/5 ">
-                                <div class="flex space-x-2 items-center shadow rounded-2xl p-3 bg-red-700 text-white">
-
-                                    <UIcon name="i-icon-park-outline-tour-bus" class="text-3xl"/> 
-                                    <UIcon name="i-icon-park-outline-dot" class="text-lg"/> 
-                                    <small>Baraya Shuttle</small>
-                                </div>
-                            </div>
-                            <div class="w-4/5">
-                                <UStepper :items="items" class="w-full" />
-                            </div>
-                        </div>
-                        <div class="flex justify-end">
-                            <div class="flex space-x-6 items-center">
-                                <p class="text-xl">Rp.250.000</p> 
-                                <btn.primary>Pesan Sekarang</btn.primary> 
-                            </div> 
-                        </div>
-                    </div>
-                </div>
+                </div> 
             </div>
             <div class=" w-1/4 max-lg:w-full max-lg:order-1 ">
                 <div class="shadow-sm p-4 rounded-2xl sticky top-28 space-y-5">
@@ -211,7 +163,7 @@ watch(
  
                         <btn.primary class="w-full" @click="toggleOpenMe">
                             <div class="px-4 w-full flex items-center justify-center space-x-3  text-lg">
-                                <UIcon name="i-material-symbols-search-rounded text-2xl"></UIcon>
+                                <UIcon name="i-material-symbols-search-rounded"></UIcon>
                                 <span>Ubah pencarian</span>
                             </div>
                         </btn.primary>

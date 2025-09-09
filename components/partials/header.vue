@@ -57,9 +57,7 @@ watch(
             </NuxtLink>
         </div>
         <ul class="flex space-x-6 items-center">
-          <li>Home</li>
-          <li>Outlet</li>
-          <li>Kontak</li>
+          <li>Home</li> 
           <li>Cek Tiket</li>
           <li> 
             <btn.primary>Masuk</btn.primary>
