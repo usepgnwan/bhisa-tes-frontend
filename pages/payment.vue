@@ -71,7 +71,6 @@ function buildSchema( ) {
 }
 
 const {showToast} = useGlobal(); 
-const router = useRouter()
 const errors = ref<Record<string,string[]>>({})
 async function submitData(){ 
     console.log(dataForm.value)
@@ -95,9 +94,6 @@ async function submitData(){
         showToast("Perikas kembali form", "warning")           
         return false
     }
-
-    
-      router.push({ path: '/payment'  , query: { _token: token }  })
 }
 
 
@@ -107,7 +103,7 @@ onMounted(() => {
   dataForm.value.penumpang = Array.from(
     { length: parseInt(data.value.jumlah_penumpang) },
     (_, i) => ({
-      nama: 'tess',    
+      nama: '',    
       kursi: '', 
     })
   )
@@ -126,119 +122,12 @@ onMounted(() => {
         <div class="flex space-x-8 max-lg:grid max-lg:grid-cols-1 max-lg:space-x-0 max-lg:gap-4">
             <div class="w-3/5 space-y-5 max-lg:w-full   min-h-screen"> 
                  <div class="px-2 font-semibold">
-                     Data Pemesan
+                     Pilih Metode Pembayaran
                 </div>
-                <div class="space-y-5 w-full flex flex-col">
-                    <form id="myForm" @submit.prevent="submitData">
-                    <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-3">
-                                <p>Nama Pemesan</p>
-                                <div>
-                                    <PartialsInputFloating v-model:value="dataForm.nama_pemesan" :statFloat="false" id="name" name="name" placeholder="Nama Pemesan"></PartialsInputFloating>
-                                    <PartialsErrorForm :status="errors.nama_pemesan !== ''" :title="errors.nama_pemesan" v-if=" errors.nama_pemesan !== undefined" />  
-                                </div>
-     
-                            </div>
-                            <div class="space-y-3">
-                                <p>Nomor Hp Pemesan</p>
-                                <div>
-                                    <PartialsInputFloating v-model:value="dataForm.no_hp" :statFloat="false" id="no_hp" name="no_hp" placeholder="Email Pemesan"></PartialsInputFloating>
-                                    <PartialsErrorForm :status="errors.no_hp !== ''" :title="errors.no_hp" v-if=" errors.no_hp !== undefined" /> 
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <p>Email Pemesan</p>
-                                <div>
-                                    <PartialsInputFloating v-model:value="dataForm.email" :statFloat="false" id="email" name="email" placeholder="Email Pemesan"></PartialsInputFloating>
-                                <PartialsErrorForm :status="errors.email !== ''" :title="errors.email" v-if=" errors.email !== undefined" />
-                                </div> 
-                            </div>
-                        </div>
-                        <hr class="border border-dashed border-gray-300">
-                        <div>
-                            <p>Data Penumpang</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-3" v-for="(penumpang, i) in dataForm.penumpang" :key="i">
-                                <p>Nama Penumpang {{ i + 1 }}</p>
-                                <div>
-                                    <PartialsInputFloating
-                                    :statFloat="false"
-                                    :id="`name_${i+1}`"
-                                    :name="`name_${i+1}`" 
-                                    v-model:value="penumpang.nama"
-                                    :placeholder="`Nama Penumpang ${i+1}`"
-                                    />
-
-                                    <PartialsErrorForm
-                                    v-if="errors.penumpang?.[i]"
-                                    :status="Boolean(errors.penumpang?.[i])"
-                                    :title="errors.penumpang[i]"
-                                    />
-                                </div>
-                                </div>
-
-                        </div>
-                    </div>
-                    </form>
-                </div> 
-                <div class="px-2 font-semibold">
-                    Piih Kursi
-                </div>
+                 
                 <div class="space-y-5 w-full flex flex-col">
                     <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
-                        <div class="flex space-x-6">
-                            <div class="w-4/5">
-                               <div class="grid grid-cols-4 gap-4 bg-white p-6 w-5/6 rounded-2xl mx-auto text-center">
-                                        <!-- baris 1 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">1</div>
-                                        <div></div>
-                                        <div></div>
-                                        <div class="bg-blue-500 text-white w-10 h-10 flex items-center justify-center">
-                                            <UIcon name="i-ri-steering-fill"></UIcon>
-                                        </div>
-
-                                        <!-- baris 2 -->
-                                        <div></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">2</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">3</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">4</div>
-
-                                        <!-- baris 3 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">5</div>
-                                        <div ></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">6</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">7</div>
-                                        <!-- baris 4 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">8</div>
-                                        <div ></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">9</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">10</div>
-                                        <!-- baris 5 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">11</div> 
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">12</div> 
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">13</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">14</div> 
-                                        
-                                        </div>
-
-                            </div>
-                            <div class="w-1/5 space-y-2.5">
-                                <div class="flex space-x-2">
-                                    <span class="bg-gray-200 p-2"></span>
-                                    <small>Sudah diboking</small>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <span class="bg-blue-800/70 border p-2"></span>
-                                    <small>Pilihan Anda</small>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <span class="bg-white border p-2"></span>
-                                    <small>Masih Kosong</small>
-                                </div>
-                            </div>
-                        </div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam architecto soluta similique cupiditate non vel neque, quae eius laboriosam earum velit commodi accusamus! Tempore at facilis dolore officiis earum doloremque? Veniam quaerat vitae totam consectetur nobis, voluptas possimus impedit ipsa. Ab illum quod quaerat ea assumenda aliquam numquam, praesentium accusantium, quas nesciunt, consectetur fugit corporis autem saepe fuga porro voluptates magni delectus facilis laborum obcaecati? Exercitationem minus cum similique? Sequi maxime minus, ab cupiditate fuga consectetur accusamus molestiae debitis ipsum magni nobis necessitatibus ullam vitae perferendis id velit quam officiis facere quae deserunt doloremque? Omnis veritatis eveniet vero aliquam blanditiis quaerat, animi sunt eos tempora mollitia similique quasi. At blanditiis voluptatibus laborum beatae? Corporis repellendus excepturi beatae accusantium consequuntur iusto fuga possimus hic dolorum, explicabo ea, neque illo atque a incidunt aliquam pariatur veritatis, voluptates dolore sequi amet necessitatibus. Aut alias perspiciatis odit illum quasi accusantium quas at ab molestias exercitationem, praesentium cumque repellendus, ducimus tempora, tempore sit maxime nesciunt quibusdam architecto labore possimus. Fugiat nobis quo et quis corrupti cupiditate est aut eligendi minus dolorem omnis inventore delectus labore maxime ex tenetur eveniet facere aspernatur recusandae voluptas, esse unde sit fugit ab. Mollitia laudantium delectus molestias, ad repellendus ullam odit, quasi dignissimos voluptatum quae inventore excepturi quo accusantium asperiores vero! Cumque sunt eos corporis repellat delectus rem vero optio perspiciatis! Dolore hic vel, expedita et nobis aut, laudantium mollitia, perspiciatis magni cumque quae deleniti doloremque porro eum! Repellendus ipsa fugit inventore velit tempore exercitationem aperiam rerum itaque ut excepturi ipsam, ex vel laudantium officiis quas, ratione labore sit nisi vitae, illum maiores libero ducimus. Praesentium doloribus eos accusamus quae ab mollitia nostrum esse, cupiditate quod ullam quisquam sint alias natus, hic quam corrupti sequi iure culpa voluptatum nesciunt! Nisi suscipit, obcaecati architecto ratione molestiae voluptate! Nostrum, aliquam doloremque ratione repellendus itaque illum veniam perspiciatis quis fuga quo officiis fugit aliquid illo. Ducimus voluptatem quos cumque voluptas minus illum cupiditate nihil provident, dolorem libero corrupti, placeat alias voluptatum tempora eveniet nulla? Perspiciatis modi, velit totam unde quisquam nisi autem hic optio sit officiis at facere natus fuga recusandae. Neque, recusandae molestiae corrupti maiores harum vel, earum, porro quae aspernatur perferendis qui nihil rem quisquam. Corporis, maiores dolore natus repudiandae debitis explicabo dolores doloribus veniam voluptas alias obcaecati tenetur magni, quia hic delectus sequi nemo quidem officiis quasi? Cum aspernatur odio quaerat magni odit necessitatibus enim, ullam, repellendus veritatis corporis omnis soluta, explicabo sint autem. Ipsam sed officiis perspiciatis sapiente veritatis tempore doloribus necessitatibus, nam quibusdam provident eum. Accusamus mollitia debitis distinctio veniam ut facere quas obcaecati, quod possimus exercitationem incidunt dicta, quibusdam fugit eius facilis odio eum earum officia non ullam soluta odit inventore natus placeat! Eius aut modi quas repellendus? Quia architecto illo aspernatur eaque voluptates id accusantium repudiandae quibusdam voluptate obcaecati. Ipsa blanditiis maiores, esse autem sint consequatur cumque, similique, officiis nam fuga porro. Eaque eligendi inventore, veniam sapiente a distinctio doloribus dignissimos animi officiis dolores voluptatibus molestiae placeat saepe praesentium labore, nihil provident, delectus quidem. Architecto provident eum quod impedit beatae. Sint, vitae voluptates reiciendis numquam dolorem ex? Nobis aperiam, eveniet cum saepe numquam quae atque quibusdam pariatur officia laboriosam ex itaque autem unde alias adipisci quos voluptatem incidunt. Illum quod at obcaecati ratione rerum quae dolor explicabo repellat, quaerat aliquid, sunt hic amet molestiae nam iste maxime modi ipsa recusandae deserunt repudiandae quia quas alias voluptas? Qui a reprehenderit sed earum quasi aspernatur quidem pariatur temporibus, est amet optio perspiciatis architecto et rem sequi culpa nostrum, inventore consectetur, distinctio doloremque sapiente eligendi eos! Quam autem facilis ipsam, sequi reiciendis, harum praesentium tempore, neque illo est labore quae quaerat. Quod, suscipit! Sint optio explicabo, eveniet fugit temporibus consectetur dolorem amet quibusdam, animi dolore aliquid! Iusto nostrum repellendus voluptatem enim ex ullam sunt doloremque fuga placeat accusantium vel cupiditate, molestias dolores totam fugit omnis itaque. Quod voluptate corrupti unde beatae nam rerum vel doloremque maxime explicabo optio! Placeat doloribus accusantium obcaecati, alias expedita laborum asperiores sunt iste dolore nobis fuga modi in sed voluptatem quia vero quos ullam laboriosam consectetur reprehenderit cupiditate similique, necessitatibus molestiae voluptas! Veritatis alias recusandae id. Alias, non optio laudantium impedit repellat tempore quidem sequi rem praesentium magni, nisi deserunt! Quos nulla saepe quaerat in autem similique ratione sapiente vitae, placeat facere deserunt dicta nisi veniam suscipit ipsum ipsam doloremque asperiores est tempora. Distinctio officiis eveniet qui perspiciatis incidunt rerum neque suscipit. Consectetur aspernatur esse illo nam accusamus atque mollitia porro quae. Nisi distinctio eveniet veniam sunt iste ratione reprehenderit, illum vitae omnis facilis tempore eius ad accusantium! Dolorum tempora a modi numquam, deleniti quisquam praesentium perspiciatis vel id sint provident neque culpa delectus architecto nisi, corporis ad obcaecati quam consectetur labore? Ab molestias mollitia, nesciunt labore doloribus suscipit vitae ducimus laboriosam! Optio quidem eius porro! Magni accusamus, dolore laudantium at, consequuntur esse quo adipisci similique repellat, laboriosam nihil ipsa? Consequuntur quam, eveniet eos neque quisquam vitae labore odio suscipit aliquam laboriosam, quas qui commodi voluptates hic soluta? Incidunt perferendis, enim earum dolorum distinctio, possimus quibusdam eum a, fuga doloremque consectetur. Officiis quos aliquam ullam possimus molestias, laudantium excepturi culpa quasi voluptates, hic fugit, illum molestiae nemo natus. Voluptate officia natus ipsam incidunt minus quos cumque ut iusto dolor saepe sapiente animi nam, voluptatum nesciunt qui dolores magni totam ullam obcaecati, repellat commodi enim asperiores impedit atque. Quidem distinctio ut dolores error aperiam! Qui, dignissimos voluptatem fuga unde autem modi aut earum velit. Facilis odit voluptatem reprehenderit unde quas quisquam, amet laborum itaque debitis quaerat, officia autem molestiae assumenda eos ipsam, voluptates delectus? Voluptatem, ut maiores. Enim similique fugiat soluta porro autem eius ducimus repellat, ab maiores excepturi incidunt reiciendis, labore neque architecto. Ut placeat fugit amet voluptatum iste, repellendus facere nostrum ex voluptate laborum consectetur neque labore in. Asperiores repellendus omnis placeat! Maiores, repellat aspernatur! Nihil veniam distinctio fugiat voluptas inventore dicta ullam eum, modi explicabo officia in consequuntur! Quae dolor inventore saepe laudantium? Deserunt quia ea exercitationem amet quibusdam? Modi dolorem rerum fugit ipsa, doloremque eius iure praesentium illum porro, cumque at!
                     </div>
                 </div> 
             </div>
@@ -317,7 +206,7 @@ onMounted(() => {
                         <btn.primary class="w-full" @click="toggleOpenMe"  form="myForm">
                             <div class="px-4 w-full flex items-center justify-center space-x-3  text-lg">
                                 <UIcon name="i-solar-wallet-broken"></UIcon> 
-                                <span>Pembayaran</span>
+                                <span>Bayar Sekarang</span>
                             </div>
                         </btn.primary>
                          
