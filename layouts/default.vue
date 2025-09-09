@@ -9,9 +9,12 @@ console.log(loading);
       <UIcon name="i-eos-icons-bubble-loading" class="w-20 h-20 text-pool-400"></UIcon> 
   </div> 
   <PartialsHeader></PartialsHeader>
-  <div> 
+  <main> 
     <slot />
-  </div>
+  </main>
+  <footer class="p-5 text-center border-t border-t-gray-200 mt-20">
+    Usep Gunawan <UIcon name="i-icon-park-outline-dot" class="text-lg"/> Tes Bhisa
+  </footer>
 </template>
 
 <style scoped></style>

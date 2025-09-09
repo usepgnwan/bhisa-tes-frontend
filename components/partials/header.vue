@@ -1,32 +1,59 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from "vue"
+import { useRoute } from "vue-router"
 
-import * as btn from "~/components/partials/button";
-import { ref, onMounted, onUnmounted } from 'vue'
- 
-
+const route = useRoute()
 const isScrolled = ref(false)
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50 // ganti angka sesuai kebutuhan
+  isScrolled.value = window.scrollY > 50
 }
 
+function enableScrollListener() {
+  window.addEventListener("scroll", handleScroll)
+  handleScroll() 
+}
+
+function disableScrollListener() {
+  window.removeEventListener("scroll", handleScroll)
+  isScrolled.value = true  
+}
+
+ 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  if (route.fullPath === "/") {
+    enableScrollListener()
+  } else {
+    disableScrollListener()
+  }
+})
+ 
+onUnmounted(() => {
+  disableScrollListener()
 })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-}) 
+ 
+watch(
+  () => route.fullPath,
+  (val) => {
+    if (val === "/") {
+      enableScrollListener()
+    } else {
+      disableScrollListener()
+    }
+  }
+)
 </script>
 
+
 <template>
-    <header :class="[  'fixed top-0 p-6 w-full transition-colors duration-300 z-50 ',  isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white']"  >
+    <header :class="[  'fixed top-0 p-4 w-full transition-colors duration-300 z-50 ',  isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white']"  >
       <div class="w-full   flex justify-between max-md:justify-end px-8">
         <div class="max-md:hidden">
-            <h3 class="text-2xl">
+            <NuxtLink to="/">
                  <NuxtImg src="/file/img/bhisa-logo.png" class="w-32" v-if="!isScrolled"></NuxtImg>
                  <NuxtImg src="/file/img/bhisa-logo2.png" class="w-32" v-if="isScrolled"></NuxtImg>
-            </h3>
+            </NuxtLink>
         </div>
         <ul class="flex space-x-6 items-center">
           <li>Home</li>

@@ -7,7 +7,7 @@ import type { Wilayah } from "~/interface";
 import { z } from 'zod'
 
 const today = new Date().toISOString().split("T")[0]
- 
+ const router = useRouter()
 
 const items = ref([
   {
@@ -97,7 +97,8 @@ function getChange(){
   dataLokasi2.value = data
   dataForm.value.titik_akhir = ""
   dataForm.value.titik_akhir_parent = ""
-  desk_tujuan.value = 'Pilih Tujuan' 
+  dataForm.value.titik_akhir_placeholder = ""
+  desk_tujuan.value = "Pilih Tujuan" 
 }  
 
 
@@ -165,6 +166,8 @@ function buildSchema(isReturn: boolean) {
     }),
   })
 }
+
+import { usePayloadData } from "~/composables/usePayloadData";
 const errors = ref<Record<string,string[]>>({})
 function sendForm(){
   let zschema = buildSchema(isReturn.value).superRefine((data, ctx) => {
@@ -198,8 +201,10 @@ function sendForm(){
         showToast("Perikas kembali form", "warning")           
         return false
       }
-
-
+   
+      let token = usePayloadData(dataForm.value).payload;
+      // const exp = Math.floor(Date.now() / 1000) + 5 * 60
+      router.push({ path: '/cari', query: { _token: token  } })
 }
 </script>
 <template>
@@ -222,8 +227,8 @@ function sendForm(){
             v-model:value="dataForm.titik_akhir"
             v-model:parent_value="dataForm.titik_akhir_parent"
             v-model:placeholder="dataForm.titik_akhir_placeholder"
-        :data="dataLokasi2" name="titik_akhir" 
-        :deskripsi="desk_tujuan"></PartialsSearchPoint> 
+            :data="dataLokasi2" name="titik_akhir" 
+            :deskripsi="desk_tujuan"></PartialsSearchPoint> 
          <PartialsErrorForm :status="errors.titik_akhir_placeholder !== ''" :title="errors.titik_akhir_placeholder" v-if=" errors.titik_akhir_placeholder !== undefined" />  
         </div>
         <div class="space-y-2 flex flex-col">

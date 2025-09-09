@@ -25,10 +25,7 @@
  
     <section class="min-h-screen"> 
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti officia voluptatibus aliquam laudantium possimus harum ipsum dolorem nesciunt odit sunt nemo facilis enim beatae dolorum, et ab dolores necessitatibus itaque.
-    </section>
-    <footer>
-      footes
-    </footer>
+    </section> 
   </div>
 </template>
 
