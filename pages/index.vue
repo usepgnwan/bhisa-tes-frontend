@@ -1,5 +1,7 @@
 
-
+<script lang="ts" setup>
+import * as btn from "~/components/partials/button";
+</script>
 <template>
   <div class="space-y-14">  
     <section class="relative w-full lg:h-[600px] -mt-[80px] flex max-lg:flex-col justify-center items-start ">
@@ -23,8 +25,39 @@
       </div>
     </section>
  
-    <section class="min-h-screen"> 
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti officia voluptatibus aliquam laudantium possimus harum ipsum dolorem nesciunt odit sunt nemo facilis enim beatae dolorum, et ab dolores necessitatibus itaque.
+    <section class="   max-w-11/12 mx-auto  p-4 space-y-3"> 
+      <h4 class="text-2xl font-semibold">Promo Hari ini</h4>
+      <div class="grid grid-cols-6 gap-4 max-lg:grid-cols-2">
+        <div class="shadow-sm border border-gray-200 rounded-2xl p-4 space-y-4" v-for="value in Array(6)">
+            <div>
+              <p class="text-gray-400 line-through">Rp.300000 </p>
+              <p>Rp.200000 </p>
+            </div>
+            <div class="flex flex-col mb-3">
+              <div class="relative border-l border-dashed min-h-20">
+                <UIcon name="i-icon-park-outline-dot" class="text-lg absolute -top-1.5 -left-2.5 text-blue-900"/>
+                <div class="absolute -top-1.5 px-2">
+                  <p  >Bandung</p>
+                  <p class="text-xs">10:00 </p>
+                  <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
+                </div>
+              </div>
+              <div class="relative border-l border-dashed min-h-20">
+                <UIcon name="i-icon-park-outline-dot" class="text-lg absolute  bottom-11 -left-2.5 text-blue-900"/>
+                  <div class="absolute -bottom-1.5 px-2">
+                    <p  >Jakarta</p>
+                    <p class="text-xs">03:00 </p>
+                    <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
+                  </div>
+              </div>
+            </div>
+            <div class="py-1">
+              <btn.primary class="w-full mt-4 !justify-center">
+                Pilih
+              </btn.primary>
+            </div>
+        </div>
+      </div>
     </section> 
   </div>
 </template>
