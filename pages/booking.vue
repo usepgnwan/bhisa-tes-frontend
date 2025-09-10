@@ -291,7 +291,7 @@ onMounted(() => {
                     </div>
                     <div class="flex flex-col mb-3 px-6 py-2">
                         <div class="relative border-l border-dashed min-h-10">
-                            <UIcon name="i-icon-park-outline-dot" class="text-lg absolute -top-1.5 -left-2.5 text-blue-900"/>
+                            <UIcon name="i-icon-park-outline-dot" class="text-lg absolute -top-1.5 -left-2.5 text-white"/>
                             <div class="absolute -top-1.5 px-2">
                             <p  >{{ data.titik_awal_placeholder ?? '-'}} </p>
                             <p class="text-xs">10:00 </p>
@@ -299,7 +299,7 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="relative border-l border-dashed min-h-20">
-                            <UIcon name="i-icon-park-outline-dot" class="text-lg absolute  bottom-11 -left-2.5 text-blue-900"/>
+                            <UIcon name="i-icon-park-outline-dot" class="text-lg absolute  bottom-11 -left-2.5 text-white"/>
                             <div class="absolute -bottom-1.5 px-2">
                                 <p  >{{ data.titik_akhir_placeholder ?? '-'}}</p>
                                 <p class="text-xs">03:00 </p>

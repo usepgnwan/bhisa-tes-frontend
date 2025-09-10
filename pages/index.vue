@@ -27,7 +27,7 @@ import * as btn from "~/components/partials/button";
  
     <section class="   max-w-11/12 mx-auto  p-4 space-y-3"> 
       <h4 class="text-2xl font-semibold">Promo Hari ini</h4>
-      <div class="grid grid-cols-6 gap-4 max-lg:grid-cols-2">
+      <div class="grid grid-cols-6 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
         <div class="shadow-sm border border-gray-200 rounded-2xl p-4 space-y-4" v-for="value in Array(6)">
             <div>
               <p class="text-gray-400 line-through">Rp.300000 </p>
