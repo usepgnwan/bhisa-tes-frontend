@@ -54,8 +54,78 @@ watch(
   },
   { immediate: true }
 )
-</script>
 
+let shuttle = [
+    {
+        shuttle : "Bhisa",
+        jam_berangkat : "4:00",
+        estimasi : "2 jam 30 menit",
+        harga : "Rp 200.000",
+        rute : [
+            {
+                title : "Buah Batu",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "Km 25",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "Sarinah",
+                description : "Lorem ipsum dolor sit",
+            }
+        ]
+
+    },
+    {
+        shuttle : "Citi Trans",
+        jam_berangkat : "6:00",
+        estimasi : "2 jam 30 menit",
+        harga : "Rp 240.000",
+        rute : [
+            {
+                title : "Pasteur",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "Km 25",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "kemang",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "Sarinah",
+                description : "Lorem ipsum dolor sit",
+            }
+        ]
+
+    },
+    {
+        shuttle : "Baraya",
+        jam_berangkat : "6:00",
+        estimasi : "2 jam 30 menit",
+        harga : "Rp 240.000",
+        rute : [
+            {
+                title : "Pasteur",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "Km 25",
+                description : "Lorem ipsum dolor sit",
+            },
+            {
+                title : "kemang",
+                description : "Lorem ipsum dolor sit",
+            }, 
+        ]
+
+    }
+]
+</script>
+ 
 <template>
     <section class="min-h-[600px] flex justify-center items-center flex-col space-y-3" v-if="!status">
         <UIcon name="i-mdi-note-search-outline" class="w-32 h-32 text-gray-500"></UIcon>
@@ -88,25 +158,25 @@ watch(
                 <div class="px-2 font-semibold">
                     Menampilkan 15 Jadwal Tersedia Travel {{ data.titik_awal_placeholder ?? '-'}} ke {{ data.titik_akhir_placeholder ?? '-'}}
                 </div>
-                <div class="space-y-5 w-full flex flex-col" v-for="_ in Array(6)">
+                <div class="space-y-5 w-full flex flex-col" v-for="(v) in shuttle"> 
                     <div class="bg-[#fafafa] shadow-sm border border-[#f0ecece2] rounded-2xl py-4 p-8 space-y-4">
-                        <p>Keberangkatan jam <b>4:00</b> Estimasi 2 jam 30 menit</p>
+                        <p>Keberangkatan jam <b>{{ v.jam_berangkat }}</b> Estimasi {{ v.estimasi }}</p>
                         <div class="flex space-x-4 items-center">
                             <div class="w-1/5 ">
                                 <div class="flex space-x-2 items-center shadow rounded-2xl p-3 bg-red-700 text-white">
 
                                     <UIcon name="i-icon-park-outline-tour-bus" class="text-3xl"/> 
                                     <UIcon name="i-icon-park-outline-dot" class="text-lg"/> 
-                                    <small>Bhisa Shuttle</small>
+                                    <small>{{ v.shuttle }} Shuttle</small>
                                 </div>
                             </div>
                             <div class="w-4/5">
-                                <UStepper :items="items" class="w-full" />
+                                <UStepper :items="v.rute" class="w-full" />
                             </div>
                         </div>
                         <div class="flex justify-end">
                             <div class="flex space-x-6 items-center">
-                                <p class="text-xl">Rp.250.000</p>  
+                                <p class="text-xl">Rp. {{ v.harga }}</p>  
                                 <NuxtLink :to="`/booking?_token=${encodeURIComponent(route.query._token)}`"  class="bg-blue-800 text-white px-4 py-1.5 rounded-lg hover:bg-blue-800/85  flex items-center space-x-1.5">Pesan Sekarang</NuxtLink>
                             </div> 
                         </div>
