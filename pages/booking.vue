@@ -192,34 +192,34 @@ onMounted(() => {
                             <div class="w-4/5">
                                <div class="grid grid-cols-4 gap-4 bg-white p-6 w-5/6 rounded-2xl mx-auto text-center">
                                         <!-- baris 1 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">1</div>
+                                        <div class="bg-gray-200 w-10 h-10 flex items-center justify-center">1</div>
                                         <div></div>
                                         <div></div>
-                                        <div class="bg-blue-500 text-white w-10 h-10 flex items-center justify-center">
+                                        <div class="bg-red-500 text-white w-10 h-10 flex items-center justify-center">
                                             <UIcon name="i-ri-steering-fill"></UIcon>
                                         </div>
 
                                         <!-- baris 2 -->
                                         <div></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">2</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">3</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">4</div>
+                                        <div class="bg-gray-200 w-10 h-10 flex items-center justify-center">2</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">3</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">4</div>
 
                                         <!-- baris 3 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">5</div>
+                                        <div class="bg-gray-200 w-10 h-10 flex items-center justify-center">5</div>
                                         <div ></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">6</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">7</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">6</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">7</div>
                                         <!-- baris 4 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">8</div>
+                                        <div class="bg-gray-200 w-10 h-10 flex items-center justify-center">8</div>
                                         <div ></div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">9</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">10</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">9</div>
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">10</div>
                                         <!-- baris 5 -->
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">11</div> 
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">12</div> 
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">13</div>
-                                        <div class="bg-amber-400 w-10 h-10 flex items-center justify-center">14</div> 
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">11</div> 
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">12</div> 
+                                        <div class="bg-white border border-gray-300 w-10 h-10 flex items-center justify-center">13</div>
+                                        <div class="bg-blue-800/70 text-white w-10 h-10 flex items-center justify-center">14</div> 
                                         
                                         </div>
 
