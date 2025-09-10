@@ -107,7 +107,7 @@ onMounted(() => {
   dataForm.value.penumpang = Array.from(
     { length: parseInt(data.value.jumlah_penumpang) },
     (_, i) => ({
-      nama: 'tess',    
+      nama: '',    
       kursi: '', 
     })
   )

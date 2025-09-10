@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     BASE_MAIN_URL: process.env.BASE_MAIN_URL, 
     SECRET_MAIN_KEY: process.env.SECRET_MAIN_KEY, 
   },
+  ui:{
+    colorMode:false,
+  }
 })
 
  
